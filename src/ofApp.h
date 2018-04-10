@@ -43,6 +43,7 @@ private:
 public:
 	// Function used for one time setup
 	void setup();
+	ofSoundPlayer gameSound;
 
 	// Main event loop functions called on every frame
 	void update();

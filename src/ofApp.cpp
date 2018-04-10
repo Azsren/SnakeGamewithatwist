@@ -21,12 +21,14 @@ If the function should update when it is called it will:
 4. Check to see if the snakes new position has resulted in its death and the end of the game
 */
 void snakeGame::update() {
+	
 	if (should_update_) {
 		if (current_state_ == IN_PROGRESS) {
 			ofVec2f snake_body_size = game_snake_.getBodySize();
 			ofVec2f head_pos = game_snake_.getHead()->position;
 			ofRectangle snake_rect(head_pos.x, head_pos.y, snake_body_size.x, snake_body_size.y);
-
+			gameSound.load("m.mp3"); //remove if cause problem
+			gameSound.play();
 			if (snake_rect.intersects(game_food_.getFoodRect())) {
 				game_snake_.eatFood(game_food_.getColor());
 				game_food_.rebase();
@@ -140,8 +142,11 @@ void snakeGame::keyPressed(int key) {
 void snakeGame::reset() {
 	game_snake_ = Snake();
 	game_food_.rebase();
+	
 	current_state_ = IN_PROGRESS;
+	
 }
+
 
 void snakeGame::windowResized(int w, int h) {
 	game_food_.resize(w, h);
