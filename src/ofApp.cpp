@@ -94,16 +94,9 @@ void snakeGame::keyPressed(int key) {
 
 	if (upper_key == 'H' && current_state_ != FINISHED) {
 		// Pause or unpause
-		gameSound.load("m.mp3"); //remove if cause problem
-		gameSound.play();
+		
 		current_state_ = (current_state_ == IN_PROGRESS) ? PAUSED : IN_PROGRESS;
 	}
-	//else if (upper_key == 'P' && current_state_ != FINISHED) {
-	//	// Pause or unpause
-	//	current_state_ = (current_state_ == IN_PROGRESS) ? PAUSED : IN_PROGRESS;
-	//	pressedH = !pressedH;
-
-	//}
 	else if (current_state_ == IN_PROGRESS)
 	{
 
@@ -141,6 +134,8 @@ void snakeGame::keyPressed(int key) {
 }
 
 void snakeGame::reset() {
+	gameSound.load("b.mp3");  //added some sound here
+	gameSound.play();
 	game_snake_ = Snake();
 	game_food_.rebase();
 

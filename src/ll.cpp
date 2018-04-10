@@ -307,25 +307,33 @@ bool operator!=(const LinkedList<ElementType>& lhs, const LinkedList<ElementType
 
 template<typename ElementType>
 typename LinkedList<ElementType>::Iterator& LinkedList<ElementType>::Iterator::operator++() {
-
+	if (current_) {
+		current_ = current_->next_;
+	}
+	return *this;
 }
 
 template<typename ElementType>
 ElementType& LinkedList<ElementType>::Iterator::operator*() {
-
+	return current__->data;
 }
 
 template<typename ElementType>
 bool LinkedList<ElementType>::Iterator::operator!=(const LinkedList<ElementType>::Iterator& other) {
-
+	return current_ != other.current_;  //NOT RIGHT
 }
 
 template<typename ElementType>
 typename LinkedList<ElementType>::Iterator LinkedList<ElementType>::begin() {
+	Iterator start;
+	start.current_ = head_;
+	return start;
 
 }
 
 template<typename ElementType>
 typename LinkedList<ElementType>::Iterator LinkedList<ElementType>::end() {
-
+	Iterator stop;
+	stop.current_ = nullptr;
+	return stop;
 }

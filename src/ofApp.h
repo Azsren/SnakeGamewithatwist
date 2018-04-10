@@ -34,7 +34,7 @@ private:
 	void drawSnake();
 	void drawGameOver();
 	void drawGamePaused();
-	void drawTopTen();
+	void drawTopTen(); //helps create the table of high scores
 
 	// Resets the game objects to their original state.
 	void reset();
