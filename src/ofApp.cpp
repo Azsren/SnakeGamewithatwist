@@ -132,10 +132,21 @@ void snakeGame::keyPressed(int key) {
 			update();
 			should_update_ = false;
 		}
+		else if (key == OF_KEY_BACKSPACE && current_direction == UP) {
+			game_snake_.setDirection(LEFT);
+		}
+		else if (key == OF_KEY_BACKSPACE && current_direction == LEFT) {
+			game_snake_.setDirection(DOWN);
+		}
+		else if (key == OF_KEY_BACKSPACE && current_direction == DOWN) {
+			game_snake_.setDirection(RIGHT);
+		}
+		else if (key == OF_KEY_BACKSPACE && current_direction == RIGHT) {
+			game_snake_.setDirection(UP);
+		}
+
 	}
 	else if (upper_key == 'R' && current_state_ == FINISHED) {
-
-
 
 		reset();
 	}
@@ -144,7 +155,7 @@ void snakeGame::keyPressed(int key) {
 
 void snakeGame::reset() {
 
-	speed = speed + 10;
+	speed = speed + 20;
 	ofSetFrameRate(speed);
 	gameSound.load("b.mp3");  //added some sound here
 	gameSound.play();
