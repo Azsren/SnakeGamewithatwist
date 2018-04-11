@@ -111,23 +111,23 @@ void snakeGame::keyPressed(int key) {
 		SnakeDirection current_direction = game_snake_.getDirection();
 
 		// If current direction has changed to a valid new one, force an immediate update and skip the next frame update
-		if (upper_key == 'W' && current_direction != DOWN && current_direction != UP) {
+		if ((upper_key == 'W' || key == OF_KEY_UP) && current_direction != DOWN && current_direction != UP) {
 			game_snake_.setDirection(UP);
 
 			update();
 			should_update_ = false;
 		}
-		else if (upper_key == 'A' && current_direction != RIGHT && current_direction != LEFT) {
+		else if ((upper_key == 'A' || key == OF_KEY_LEFT) && current_direction != RIGHT && current_direction != LEFT) {
 			game_snake_.setDirection(LEFT);
 			update();
 			should_update_ = false;
 		}
-		else if ((upper_key == 'S') && current_direction != UP && current_direction != DOWN) {
+		else if ((upper_key == 'S' || key == OF_KEY_DOWN) && current_direction != UP && current_direction != DOWN) {
 			game_snake_.setDirection(DOWN);
 			update();
 			should_update_ = false;
 		}
-		else if (upper_key == 'D' && current_direction != LEFT && current_direction != RIGHT) {
+		else if ((upper_key == 'D' || key == OF_KEY_RIGHT) && current_direction != LEFT && current_direction != RIGHT) {
 			game_snake_.setDirection(RIGHT);
 			update();
 			should_update_ = false;
