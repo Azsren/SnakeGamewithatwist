@@ -43,9 +43,13 @@ private:
 public:
 	// Function used for one time setup
 	void setup();
+	// Variables
+	int speed = 13;
 	ofSoundPlayer gameSound;
+	ofImage goodjob;
 
 	// Main event loop functions called on every frame
+	
 	void update();
 	void draw();
 	

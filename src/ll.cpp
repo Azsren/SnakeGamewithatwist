@@ -149,10 +149,6 @@ void LinkedList<ElementType>::pop_front() {
 	head_ = tmp->next_;
 	delete tmp;
 
-
-
-
-
 }
 
 template<typename ElementType>
@@ -174,12 +170,7 @@ void LinkedList<ElementType>::pop_back() {
 		delete cur->next_;
 		cur->next_ = nullptr;
 
-
-
 	}
-
-
-
 }
 
 template<typename ElementType>
@@ -193,8 +184,6 @@ int LinkedList<ElementType>::size() const {
 		}
 	}
 	return count;
-
-
 }
 
 template<typename ElementType>

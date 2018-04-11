@@ -1,7 +1,11 @@
 #include "ofApp.h"
 #include <iostream>
+#include <chrono>
 
 using namespace snakelinkedlist;
+
+
+
 
 // Setup method
 void snakeGame::setup() {
@@ -23,7 +27,9 @@ If the function should update when it is called it will:
 void snakeGame::update() {
 
 	if (should_update_) {
+
 		if (current_state_ == IN_PROGRESS) {
+
 			ofVec2f snake_body_size = game_snake_.getBodySize();
 			ofVec2f head_pos = game_snake_.getHead()->position;
 			ofRectangle snake_rect(head_pos.x, head_pos.y, snake_body_size.x, snake_body_size.y);
@@ -58,6 +64,7 @@ Draws the current state of the game with the following logic
 */
 void snakeGame::draw() {
 	if (current_state_ == PAUSED) {
+
 		drawGamePaused();
 	}
 	else if (current_state_ == FINISHED) {
@@ -86,6 +93,7 @@ if current direction is not dir (Prevents key spamming to rapidly update the sna
 void snakeGame::keyPressed(int key) {
 	if (key == OF_KEY_F12) {
 		ofToggleFullscreen();
+
 		return;
 	}
 
@@ -94,7 +102,7 @@ void snakeGame::keyPressed(int key) {
 
 	if (upper_key == 'H' && current_state_ != FINISHED) {
 		// Pause or unpause
-		
+
 		current_state_ = (current_state_ == IN_PROGRESS) ? PAUSED : IN_PROGRESS;
 	}
 	else if (current_state_ == IN_PROGRESS)
@@ -105,6 +113,7 @@ void snakeGame::keyPressed(int key) {
 		// If current direction has changed to a valid new one, force an immediate update and skip the next frame update
 		if (upper_key == 'W' && current_direction != DOWN && current_direction != UP) {
 			game_snake_.setDirection(UP);
+
 			update();
 			should_update_ = false;
 		}
@@ -125,15 +134,18 @@ void snakeGame::keyPressed(int key) {
 		}
 	}
 	else if (upper_key == 'R' && current_state_ == FINISHED) {
+
+
+
 		reset();
 	}
-
-
-
-
 }
 
+
 void snakeGame::reset() {
+
+	speed = speed + 10;
+	ofSetFrameRate(speed);
 	gameSound.load("b.mp3");  //added some sound here
 	gameSound.play();
 	game_snake_ = Snake();
@@ -177,10 +189,11 @@ void snakeGame::drawGameOver() {
 }
 
 void snakeGame::drawGamePaused() {
+
 	if (!pressedH) {
 		drawTopTen();
 	}
-	string pause_message = "P or H to Unpause!";
+	string pause_message = "H to Unpause!";
 	ofSetColor(0, 0, 0);
 	ofDrawBitmapString(pause_message, ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
 }
